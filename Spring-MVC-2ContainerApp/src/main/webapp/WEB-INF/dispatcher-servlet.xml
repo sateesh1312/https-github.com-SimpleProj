@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- configure SimpleUrlHandlerMapping -->
+<bean id="sumhm" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+<property name="mappings">
+<props>
+<prop key="/home.htm">ufvc1</prop>
+<prop key="/about-us.htm">ufvc1</prop>
+<prop key="/contact-us.htm">ufvc1</prop>
+<prop key="/wishmsg.htm">wsms</prop>
+</props>
+</property>
+</bean>
+<!--configure wishmsg controller  -->
+<bean id="wsms" class="com.mvc.test.WishMessageController">
+<property name="service" ref="msg"/>
+</bean>
+<!--configure UrlFileNameViewController  -->
+<bean id="ufvc1" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+<!-- configure InternalResourceViewResolver -->
+<bean id="irv" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/pages/"/>
+<property name="suffix" value=".jsp"/>
+</bean>
+</beans>
